@@ -1,5 +1,5 @@
 # React Concepts
-1. Don't touch the DOM. I'll do it.
+### 1. Don't touch the DOM. I'll do it.
 * The DOM stands for **(Document Object Model)** : It's what the browser uses to display a website or 
 a web app, and JavaScript is simply manipulating this DOM.
 * The DOM is a tree representation of the page.
@@ -40,6 +40,15 @@ does it for us.
    * less complexity .
    * Better code quality.
    * faster development times.
+### 2. Building websites like lego blocks.
+React is design around the concept of reusable components. Each of these individual 
+components create the whole app.
+* Each peace of the application is a component.
+* A component can contain another component just like lego blocks.
+* People can share these components around and all of them will work.
+* Components: are simply just JavaScript functions that received some sort of input
+or attributes , which we call props, and in return, it returns this thing that kind of
+look like HTML.
 
 
 
