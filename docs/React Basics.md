@@ -71,6 +71,9 @@ application all the way to the **DOM** and if any changes or events happen that 
 the state while we go back to the state and that's state change trickles down to 
 different components in one direction is a restriction on how data can move through
 our app and by adding this restriction it's becomes easy to debug code.
+### 4. UI, The rest is up to you. (React is Every where)
+the idea of cross platform really took off with React, and you'll notice when start building our
+projects that we actually import React Core library and React DOM to our project.
 
 
 
