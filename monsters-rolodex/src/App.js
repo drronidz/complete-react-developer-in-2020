@@ -13,7 +13,7 @@ class App extends Component {
 
   render() {
     return (
-        <div>
+        <div className='App'>
             <h1>Hello My name is {this.state.name}</h1>
             <button onClick={() => this.setState({name: 'Hello John'})}>Click</button>
         </div>
