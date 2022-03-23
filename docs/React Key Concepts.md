@@ -16,3 +16,6 @@ Essentially methods that get called at different stages of when a component gets
 1. `ComponentDidMount()`  when this component mounts
     * Mounting is when **React** puts our component on the page & it renders it onto the **DOM**
     for the first time.
+* **Synchronous action**, we can expect to happen almost immediately.
+* **Asynchronous Action** is something that actually takes an indefinite amount
+of time JavaScript does not know
