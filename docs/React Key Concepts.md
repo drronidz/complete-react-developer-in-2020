@@ -10,3 +10,9 @@ This allows the users to:
 performance gains and more dynamic experience.
 * With some tradeoff disadvantages such as SEO, more efforts required to maintain the state,
 implementing navigation, and do meaningful performance monitoring.
+
+### Lifecycle methods
+Essentially methods that get called at different stages of when a component gets rendered.
+1. `ComponentDidMount()`  when this component mounts
+    * Mounting is when **React** puts our component on the page & it renders it onto the **DOM**
+    for the first time.
