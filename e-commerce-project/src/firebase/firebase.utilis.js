@@ -1,5 +1,6 @@
 import firebase from "firebase/compat/app";
 import 'firebase/compat/auth'
+import 'firebase/compat/firestore'
 
 
 const firebaseConfig = {
@@ -11,14 +12,38 @@ const firebaseConfig = {
     appId : "1:123347148230:web:ba8f594b47ddde0aeaa6c7"
 };
 
-//Initialize Firebase
-firebase.initializeApp(firebaseConfig)
+firebase.initializeApp(firebaseConfig);
 
-export const auth = firebase.auth()
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+    if (!userAuth) return;
 
-const provider = new firebase.auth.GoogleAuthProvider()
-provider.setCustomParameters({ prompt : 'select_account'})
+    const userRef = firestore.doc(`users/${userAuth.uid}`);
 
-export const signInWithGoogle = () => auth.signInWithPopup(provider)
+    const snapShot = await userRef.get();
 
-export default firebase
+    if (!snapShot.exists) {
+        const { displayName, email } = userAuth;
+        const createdAt = new Date();
+        try {
+            await userRef.set({
+                displayName,
+                email,
+                createdAt,
+                ...additionalData
+            });
+        } catch (error) {
+            console.log('error creating user', error.message);
+        }
+    }
+
+    return userRef;
+};
+
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
+
+const provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({ prompt: 'select_account' });
+export const signInWithGoogle = () => auth.signInWithPopup(provider);
+
+export default firebase;
