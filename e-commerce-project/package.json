@@ -12,7 +12,9 @@
     "web-vitals": "^2.1.4",
     "node-sass": "7.0.1",
     "react-router-dom": "^5.0.0",
-    "firebase": "9.6.9"
+    "firebase": "9.6.9",
+    "redux": "^4.1.2",
+    "react-redux": "^7.2.6"
   },
   "resolutions": {
     "babel-jest": "24.7.1"
