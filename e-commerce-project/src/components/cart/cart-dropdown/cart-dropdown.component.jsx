@@ -5,13 +5,15 @@ import { withRouter } from 'react-router-dom'
 
 import CartItem from '../cart-item/cart-item.component';
 import { selectCartItems } from "../../../redux/cart/cart.selectors";
+import { toggleCartHidden } from "../../../redux/cart/cart.actions";
 
 import './cart-dropdown.styles.scss';
 import CustomButton from "../../custom-button/custom-button.component";
-import {createStructuredSelector} from "reselect";
+import { createStructuredSelector } from "reselect";
 
-const CartDropdown = ({ cartItems, history }) => (
-    <div className='cart-dropdown'>
+const CartDropdown = ({ cartItems, history, ...otherProps}) => {
+    console.log(otherProps)
+    return (<div className='cart-dropdown'>
         <div className='cart-items'>
             {
                 cartItems.length
@@ -22,11 +24,14 @@ const CartDropdown = ({ cartItems, history }) => (
 
             }
         </div>
-        <CustomButton onClick={() => history.push('/checkout')}>
+        <CustomButton onClick={() => {
+            history.push('/checkout')
+            otherProps.dispatch(toggleCartHidden())
+        }}>
             GO TO CHECKOUT
         </CustomButton>
     </div>
-);
+)};
 
 const mapStateToProps = createStructuredSelector({
     cartItems: selectCartItems
