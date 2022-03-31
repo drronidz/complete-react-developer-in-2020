@@ -1,5 +1,6 @@
 import CartActionTypes from "./cart.types";
-import {addItemToCart, removeItemFromCart} from "./cart.utils";
+import {addItemToCart, decrementCartItemQuantity, removeItemFromCart} from "./cart.utils";
+import {incrementCartItemQuantity} from "./cart.actions";
 
 
 const INITIAL_STATE = {
@@ -8,6 +9,7 @@ const INITIAL_STATE = {
 }
 
 const cartReducer = (state = INITIAL_STATE, action) => {
+
     switch (action.type) {
 
         case CartActionTypes.TOGGLE_CART_HIDDEN:
@@ -17,6 +19,18 @@ const cartReducer = (state = INITIAL_STATE, action) => {
             }
 
         case CartActionTypes.ADD_ITEM_TO_CART:
+            return {
+                ...state,
+                cartItems: addItemToCart(state.cartItems, action.payload)
+            }
+
+        case CartActionTypes.DECREMENT_CART_ITEM_QUANTITY:
+            return {
+                ...state,
+                cartItems: decrementCartItemQuantity(state.cartItems, action.payload)
+            }
+
+        case CartActionTypes.INCREMENT_CART_ITEM_QUANTITY:
             return {
                 ...state,
                 cartItems: addItemToCart(state.cartItems, action.payload)
