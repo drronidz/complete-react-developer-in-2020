@@ -13,8 +13,7 @@ const CollectionItem = ({ item, addItemToCart }) => {
                 className='image'
                 style={{
                     backgroundImage: `url(${imageUrl})`
-                }}
-            />
+                }}/>
             <div className='collection-footer'>
                 <span className='name'>{name}</span>
                 <span className='price'>{price}</span>
